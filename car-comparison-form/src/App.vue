@@ -1,25 +1,15 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <CarComparisonPage></CarComparisonPage>
 </template>
 
-<script>
-import HelloWorld from './pages/CarComparisonPage.vue'
+<script lang="ts">
+import CarComparisonPage from './pages/CarComparisonPage.vue';
+
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    CarComparisonPage
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
