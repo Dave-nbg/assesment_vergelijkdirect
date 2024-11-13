@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/CarComparisonForm.vue'
+import HelloWorld from './pages/CarComparisonPage.vue'
 
 export default {
   name: 'App',
