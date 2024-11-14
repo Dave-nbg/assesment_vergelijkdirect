@@ -42,12 +42,12 @@ export default {
         const url = new URL(window.location);
         url.searchParams.set('brand', brand);
         url.searchParams.set('toelating', toelating);
-        url.searchParams.set('zipcode', zipcode);  // Add zipcode to query
-        url.searchParams.set('houseNumber', houseNumber);  // Add house number to query
+        url.searchParams.set('zipcode', zipcode);  
+        url.searchParams.set('houseNumber', houseNumber);  
         if (houseAddition) {
-          url.searchParams.set('houseAddition', houseAddition);  // Add house addition if available
+          url.searchParams.set('houseAddition', houseAddition);  
         }
-        url.searchParams.set('kilometrage', kilometrage);  // Add kilometrage last
+        url.searchParams.set('kilometrage', kilometrage);  
 
         window.history.pushState({}, '', url);
       } else {
