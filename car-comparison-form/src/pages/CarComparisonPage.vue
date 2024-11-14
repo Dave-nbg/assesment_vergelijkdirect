@@ -3,8 +3,8 @@
     <HeroComponent></HeroComponent>
     <form @submit.prevent="sendQueryParams">
       <LicensePlateComponent ref="licensePlateComponent"></LicensePlateComponent>
-      <HomeComponent></HomeComponent>
-      <KilometrageComponent></KilometrageComponent>
+      <HomeComponent ref="homeComponent"></HomeComponent>
+      <KilometrageComponent ref="kilometrageComponent"></KilometrageComponent>
       <div class="flex justify-center">
         <input class="bg-blue-500 hover:bg-blue-600 focus:bg-blue-800 font-bold text-white rounded px-8 py-3" type="submit" value="Submit">
       </div>
@@ -28,19 +28,30 @@ export default {
   methods: {
     sendQueryParams() {
       const licensePlateComponent = this.$refs.licensePlateComponent;
+      const kilometrageComponent = this.$refs.kilometrageComponent;
+      const homeComponent = this.$refs.homeComponent;
+
       const brand = licensePlateComponent?.brand;
       const toelating = licensePlateComponent?.toelating;
+      const zipcode = homeComponent?.zipcode;
+      const houseNumber = homeComponent?.houseNumber;
+      const houseAddition = homeComponent?.houseAddition;
+      const kilometrage = kilometrageComponent?.selectedOption;
 
-      if (brand && toelating) {
-
+      if (brand && toelating && kilometrage && zipcode && houseNumber) {
         const url = new URL(window.location);
         url.searchParams.set('brand', brand);
         url.searchParams.set('toelating', toelating);
+        url.searchParams.set('zipcode', zipcode);  // Add zipcode to query
+        url.searchParams.set('houseNumber', houseNumber);  // Add house number to query
+        if (houseAddition) {
+          url.searchParams.set('houseAddition', houseAddition);  // Add house addition if available
+        }
+        url.searchParams.set('kilometrage', kilometrage);  // Add kilometrage last
 
         window.history.pushState({}, '', url);
-
       } else {
-        console.error('Brand or Toelating is not defined');
+        console.error('Brand, Toelating, Zipcode, House Number, or Kilometrage is not defined');
       }
     }
   }
