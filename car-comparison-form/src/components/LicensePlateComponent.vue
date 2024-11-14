@@ -4,12 +4,13 @@
       <div class="max-h-[24px] flex items-center">
         <InfoMessage class="mr-2" message="The license plate doesn't have to contain dashes(-)." />
       </div>
-      <label class="mb-2">Fill in your license plate</label>
+      <label for="license-input" class="mb-2">License plate:</label>
     </div>
     
     <div class="flex items-center">
       <img height="52" width="32" alt="license-plate-begin" src="../assets/kenteken-blauw-nl.svg"/>
       <input
+        id="license-input"
         required
         v-model="licensePlate"
         @input="handleInput"
