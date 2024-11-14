@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col items-center mb-4">
-    
     <div class="flex">
       <div class="max-h-[24px] flex items-center">
         <InfoMessage class="mr-2" message="The license plate doesn't have to contain dashes(-)." />
@@ -11,6 +10,7 @@
     <div class="flex items-center">
       <img height="52" width="32" alt="license-plate-begin" src="../assets/kenteken-blauw-nl.svg"/>
       <input
+        required
         v-model="licensePlate"
         @input="handleInput"
         maxlength="6"
@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, defineExpose, computed } from 'vue';
 import axios from 'axios';
 import InfoMessage from './InfoMessage.vue';
 
@@ -81,5 +81,9 @@ const fetchVehicleInfo = async () => {
     loading.value = false;
   }
 };
-</script>
 
+defineExpose({
+  brand: computed(() => vehicleInfo.value?.merk),
+  toelating: computed(() => vehicleInfo.value?.datum_eerste_toelating)
+});
+</script>
