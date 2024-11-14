@@ -1,7 +1,12 @@
 <template>
   <div class="flex flex-col items-center mb-4">
     
-    <label class="mb-2">Fill in your license plate</label>
+    <div class="flex">
+      <div class="max-h-[24px] flex items-center">
+        <InfoMessage class="mr-2" message="The license plate doesn't have to contain dashes(-)." />
+      </div>
+      <label class="mb-2">Fill in your license plate</label>
+    </div>
     
     <div class="flex items-center">
       <img height="52" width="32" alt="license-plate-begin" src="../assets/kenteken-blauw-nl.svg"/>
@@ -16,7 +21,7 @@
 
     <p v-if="errorMessage" class="text-red-500 mt-2">{{ errorMessage }}</p>
 
-    <p v-if="loading" class="text-blue-500 mt-2">Loading...</p>
+    <p v-if="loading" class=" mt-2">Loading...</p>
 
     <div v-if="vehicleInfo && !loading" class="mt-4 text-gray-800">
       <p><strong>Brand:</strong> {{ vehicleInfo.merk }}</p>
@@ -28,6 +33,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
+import InfoMessage from './InfoMessage.vue';
 
 const licensePlate = ref('');
 const errorMessage = ref('');
@@ -38,19 +44,9 @@ const handleInput = async () => {
   licensePlate.value = licensePlate.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
 
   if (licensePlate.value.length === 6) {
-    validateInput();
     await fetchVehicleInfo();
   } else {
     errorMessage.value = '';
-    vehicleInfo.value = null;
-  }
-};
-
-const validateInput = () => {
-  if (/^[A-Z0-9]{6}$/.test(licensePlate.value)) {
-    errorMessage.value = '';
-  } else {
-    errorMessage.value = 'Invalid license plate format. Use 6 letters/numbers.';
     vehicleInfo.value = null;
   }
 };
@@ -66,9 +62,11 @@ const fetchVehicleInfo = async () => {
 
     if (response.data.length > 0) {
       const data = response.data[0];
+      const toelatingsDatum = new Date(data.datum_eerste_toelating_dt)
+      const formattedToelatingsDatum = new Intl.DateTimeFormat('en-GB').format(toelatingsDatum);
       vehicleInfo.value = {
         merk: data.merk,
-        datum_eerste_toelating: data.datum_eerste_toelating
+        datum_eerste_toelating: formattedToelatingsDatum
       };
       errorMessage.value = '';
     } else {
@@ -85,14 +83,3 @@ const fetchVehicleInfo = async () => {
 };
 </script>
 
-<style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s;
-}
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
-}
-.textDialog {
-  opacity: 1;
-}
-</style>
