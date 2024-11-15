@@ -10,7 +10,7 @@
       class="border border-black rounded p-2"
       @change="handleDateChange"
     >
-    <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+    <p v-if="errorMessage" class="text-red-500 max-w-[155px]">{{ errorMessage }}</p>
 
     <div v-if="freeYearsOptions.length > 0" class="grid justify-center mt-4">
       <label>Claim Free Years:</label>
@@ -56,7 +56,7 @@ const handleDateChange = (event: Event) => {
   }
 
   const birthYear = birthdayDate.getFullYear();
-  const maxFreeYears = (currDate.getFullYear() - birthYear) - 18;
+  const maxFreeYears = Math.min((currDate.getFullYear() - birthYear) - 18, 31);
 
   freeYearsOptions.value = Array.from({ length: maxFreeYears + 1 }, (_, i) => i - 5);
 
