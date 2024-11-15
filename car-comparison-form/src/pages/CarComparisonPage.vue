@@ -4,6 +4,7 @@
     <form @submit.prevent="sendQueryParams">
       <LicensePlateComponent ref="licensePlateComponent"></LicensePlateComponent>
       <HomeComponent ref="homeComponent"></HomeComponent>
+      <BirthdayComponent></BirthdayComponent>
       <KilometrageComponent ref="kilometrageComponent"></KilometrageComponent>
       <div class="flex justify-center">
         <input class="bg-blue-500 hover:bg-blue-600 focus:bg-blue-800 font-bold text-white rounded px-8 py-3" type="submit" value="Submit">
@@ -17,12 +18,14 @@ import LicensePlateComponent from '@/components/LicensePlateComponent.vue';
 import HeroComponent from '@/components/HeroComponent.vue';
 import HomeComponent from '@/components/HomeComponent.vue';
 import KilometrageComponent from '@/components/KilometrageComponent.vue';
+import BirthdayComponent from '@/components/BirthdayComponent.vue';
 
 export default {
   components: {
     LicensePlateComponent,
     HeroComponent,
     HomeComponent,
+    BirthdayComponent,
     KilometrageComponent
   },
   methods: {
@@ -57,3 +60,4 @@ export default {
   }
 }
 </script>
+
