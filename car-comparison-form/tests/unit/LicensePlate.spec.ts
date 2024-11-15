@@ -1,4 +1,4 @@
-test('Alterative test. The other tests could also work, but then i need to reinstall typescript and i am afraid to break the whole application, but the tests will look something like this:', () => {
+test('Alterative test. The other tests could also work, but then i need to make a new setup for the project to fix it and i am afraid to break parts of the application without knowing what and that will cost a lot of time, but the tests will look something like this:', () => {
   expect(true).toBe(true);
 });
 
