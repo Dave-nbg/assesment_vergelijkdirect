@@ -1,4 +1,8 @@
 # car-comparison-form
+### Go to this folder in the terminal
+```
+cd car-comparison-form
+```
 
 ## Project setup
 ```
