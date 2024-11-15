@@ -73,6 +73,7 @@ const fetchVehicleInfo = async () => {
     } else {
       errorMessage.value = 'No vehicle found for this license plate.';
       vehicleInfo.value = null;
+      licensePlate.value = '';
     }
   } catch (error) {
     console.error(error);

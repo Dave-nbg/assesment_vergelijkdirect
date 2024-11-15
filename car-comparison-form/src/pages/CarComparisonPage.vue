@@ -4,7 +4,7 @@
     <form @submit.prevent="sendQueryParams">
       <LicensePlateComponent ref="licensePlateComponent"></LicensePlateComponent>
       <HomeComponent ref="homeComponent"></HomeComponent>
-      <BirthdayComponent></BirthdayComponent>
+      <BirthdayComponent ref="birthdayComponent"></BirthdayComponent>
       <KilometrageComponent ref="kilometrageComponent"></KilometrageComponent>
       <div class="flex justify-center">
         <input class="bg-blue-500 hover:bg-blue-600 focus:bg-blue-800 font-bold text-white rounded px-8 py-3" type="submit" value="Submit">
@@ -33,6 +33,10 @@ export default {
       const licensePlateComponent = this.$refs.licensePlateComponent;
       const kilometrageComponent = this.$refs.kilometrageComponent;
       const homeComponent = this.$refs.homeComponent;
+      const birthdayComponent = this.$refs.birthdayComponent;
+
+      const birthday = birthdayComponent.birthday;
+      const freeYearsOptions = birthdayComponent.freeYearsOptions;
 
       const brand = licensePlateComponent?.brand;
       const toelating = licensePlateComponent?.toelating;
@@ -52,6 +56,13 @@ export default {
         }
         url.searchParams.set('kilometrage', kilometrage);  
 
+        if (birthday) {
+          url.searchParams.set('birthday', birthday.toISOString());
+        }
+        if (freeYearsOptions?.length) {
+          url.searchParams.set('freeYears', freeYearsOptions.join(','));
+        }
+
         window.history.pushState({}, '', url);
       } else {
         console.error('Brand, Toelating, Zipcode, House Number, or Kilometrage is not defined');
@@ -60,4 +71,3 @@ export default {
   }
 }
 </script>
-
