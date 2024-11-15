@@ -3,7 +3,7 @@
       <div class="grid justify-center mb-4">
         <div class="flex items-center">
           <InfoMessage class="mr-2" message="Zipcode needs to be in this format: 4 digits followed by 2 uppercase letters (1234AB)" />
-          <label for="zipcode-input">Zipcode</label>
+          <label for="zipcode-input">Zipcode:</label>
         </div>
         <input 
           id="zipcode-input"

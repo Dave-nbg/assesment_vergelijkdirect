@@ -1,8 +1,12 @@
 <template>
     <div class="grid justify-center mb-4">
-      <label>Birthday:</label>
+      <div class="flex">
+        <InfoMessage class="mr-2" message="Age needs to be between 18 and 100"></InfoMessage>  
+        <label>Birthday:</label>
+      </div>
       <input 
-        type="date" 
+        type="date"
+        required 
         class="border border-black rounded p-2"
         @change="handleDateChange"
       >
@@ -25,6 +29,7 @@
   
   <script setup lang="ts">
   import { ref } from 'vue';
+  import InfoMessage from './InfoMessage.vue';
   
   const errorMessage = ref<string | null>(null);
   const freeYearsOptions = ref<number[]>([]);
