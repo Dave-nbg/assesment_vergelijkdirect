@@ -50,7 +50,7 @@ Build a car comparison input form. We expect that the form meets the following r
 - Split HTML into multiple components https://vuejs.org/api/sfc-spec.html
 - Add field validation https://vee-validate.logaretm.com/v4/
 - Build unit tests for the components
-- Describe the process of installing and running the project for testing.
+- Describe the process of installing and running the project for testing (see README in car-comparison-form folder) .
 
 ## UI
 For this section, you can choose your own implementation. This can be bootstrap, Tailwind or any other libraries you want or standard CSS.
