@@ -1,4 +1,5 @@
 # Vergelijkdirect.com code challenge
+##See README in car-comparison-form for the installation instructions
 
 ## Before starting the coding
 
